@@ -1,0 +1,11 @@
+----------------overloadings---------------------------
+ImNodes_ClearLinkSelection	2
+1	void	ImNodes_ClearLinkSelection_Nil ()
+2	void	ImNodes_ClearLinkSelection_Int (int)
+ImNodes_ClearNodeSelection	2
+1	void	ImNodes_ClearNodeSelection_Nil ()
+2	void	ImNodes_ClearNodeSelection_Int (int)
+ImNodes_IsLinkCreated	2
+1	bool	ImNodes_IsLinkCreated_BoolPtr (int*,int*,bool*)
+2	bool	ImNodes_IsLinkCreated_IntPtr (int*,int*,int*,int*,bool*)
+6 overloaded
