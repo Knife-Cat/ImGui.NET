@@ -1,5 +1,5 @@
 using System;
-using System.Numerics;
+using UnityEngine;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -11,8 +11,8 @@ namespace ImGuiNET
         public IntPtr TexID;
         public int TexDesiredWidth;
         public int TexGlyphPadding;
-        public byte Locked;
         public void* UserData;
+        public byte Locked;
         public byte TexReady;
         public byte TexPixelsUseColors;
         public byte* TexPixelsAlpha8;
@@ -23,7 +23,7 @@ namespace ImGuiNET
         public Vector2 TexUvWhitePixel;
         public ImVector Fonts;
         public ImVector CustomRects;
-        public ImVector ConfigData;
+        public ImVector Sources;
         public Vector4 TexUvLines_0;
         public Vector4 TexUvLines_1;
         public Vector4 TexUvLines_2;
@@ -57,37 +57,6 @@ namespace ImGuiNET
         public Vector4 TexUvLines_30;
         public Vector4 TexUvLines_31;
         public Vector4 TexUvLines_32;
-        public Vector4 TexUvLines_33;
-        public Vector4 TexUvLines_34;
-        public Vector4 TexUvLines_35;
-        public Vector4 TexUvLines_36;
-        public Vector4 TexUvLines_37;
-        public Vector4 TexUvLines_38;
-        public Vector4 TexUvLines_39;
-        public Vector4 TexUvLines_40;
-        public Vector4 TexUvLines_41;
-        public Vector4 TexUvLines_42;
-        public Vector4 TexUvLines_43;
-        public Vector4 TexUvLines_44;
-        public Vector4 TexUvLines_45;
-        public Vector4 TexUvLines_46;
-        public Vector4 TexUvLines_47;
-        public Vector4 TexUvLines_48;
-        public Vector4 TexUvLines_49;
-        public Vector4 TexUvLines_50;
-        public Vector4 TexUvLines_51;
-        public Vector4 TexUvLines_52;
-        public Vector4 TexUvLines_53;
-        public Vector4 TexUvLines_54;
-        public Vector4 TexUvLines_55;
-        public Vector4 TexUvLines_56;
-        public Vector4 TexUvLines_57;
-        public Vector4 TexUvLines_58;
-        public Vector4 TexUvLines_59;
-        public Vector4 TexUvLines_60;
-        public Vector4 TexUvLines_61;
-        public Vector4 TexUvLines_62;
-        public Vector4 TexUvLines_63;
         public IntPtr* FontBuilderIO;
         public uint FontBuilderFlags;
         public int PackIdMouseCursors;
@@ -105,8 +74,8 @@ namespace ImGuiNET
         public ref IntPtr TexID => ref Unsafe.AsRef<IntPtr>(&NativePtr->TexID);
         public ref int TexDesiredWidth => ref Unsafe.AsRef<int>(&NativePtr->TexDesiredWidth);
         public ref int TexGlyphPadding => ref Unsafe.AsRef<int>(&NativePtr->TexGlyphPadding);
-        public ref bool Locked => ref Unsafe.AsRef<bool>(&NativePtr->Locked);
         public IntPtr UserData { get => (IntPtr)NativePtr->UserData; set => NativePtr->UserData = (void*)value; }
+        public ref bool Locked => ref Unsafe.AsRef<bool>(&NativePtr->Locked);
         public ref bool TexReady => ref Unsafe.AsRef<bool>(&NativePtr->TexReady);
         public ref bool TexPixelsUseColors => ref Unsafe.AsRef<bool>(&NativePtr->TexPixelsUseColors);
         public IntPtr TexPixelsAlpha8 { get => (IntPtr)NativePtr->TexPixelsAlpha8; set => NativePtr->TexPixelsAlpha8 = (byte*)value; }
@@ -117,8 +86,8 @@ namespace ImGuiNET
         public ref Vector2 TexUvWhitePixel => ref Unsafe.AsRef<Vector2>(&NativePtr->TexUvWhitePixel);
         public ImVector<ImFontPtr> Fonts => new ImVector<ImFontPtr>(NativePtr->Fonts);
         public ImPtrVector<ImFontAtlasCustomRectPtr> CustomRects => new ImPtrVector<ImFontAtlasCustomRectPtr>(NativePtr->CustomRects, Unsafe.SizeOf<ImFontAtlasCustomRect>());
-        public ImPtrVector<ImFontConfigPtr> ConfigData => new ImPtrVector<ImFontConfigPtr>(NativePtr->ConfigData, Unsafe.SizeOf<ImFontConfig>());
-        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>(&NativePtr->TexUvLines_0, 64);
+        public ImPtrVector<ImFontConfigPtr> Sources => new ImPtrVector<ImFontConfigPtr>(NativePtr->Sources, Unsafe.SizeOf<ImFontConfig>());
+        public RangeAccessor<Vector4> TexUvLines => new RangeAccessor<Vector4>(&NativePtr->TexUvLines_0, 33);
         public IntPtr FontBuilderIO { get => (IntPtr)NativePtr->FontBuilderIO; set => NativePtr->FontBuilderIO = (IntPtr*)value; }
         public ref uint FontBuilderFlags => ref Unsafe.AsRef<uint>(&NativePtr->FontBuilderFlags);
         public ref int PackIdMouseCursors => ref Unsafe.AsRef<int>(&NativePtr->PackIdMouseCursors);
@@ -652,23 +621,6 @@ namespace ImGuiNET
         {
             ushort* ret = ImGuiNative.ImFontAtlas_GetGlyphRangesVietnamese((ImFontAtlas*)(NativePtr));
             return (IntPtr)ret;
-        }
-        public bool GetMouseCursorTexData(ImGuiMouseCursor cursor, out Vector2 out_offset, out Vector2 out_size, out Vector2 out_uv_border, out Vector2 out_uv_fill)
-        {
-            fixed (Vector2* native_out_offset = &out_offset)
-            {
-                fixed (Vector2* native_out_size = &out_size)
-                {
-                    fixed (Vector2* native_out_uv_border = &out_uv_border)
-                    {
-                        fixed (Vector2* native_out_uv_fill = &out_uv_fill)
-                        {
-                            byte ret = ImGuiNative.ImFontAtlas_GetMouseCursorTexData((ImFontAtlas*)(NativePtr), cursor, native_out_offset, native_out_size, native_out_uv_border, native_out_uv_fill);
-                            return ret != 0;
-                        }
-                    }
-                }
-            }
         }
         public void GetTexDataAsAlpha8(out byte* out_pixels, out int out_width, out int out_height)
         {

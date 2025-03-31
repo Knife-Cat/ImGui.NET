@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
-using Num = System.Numerics;
+using Num = UnityEngine;
 
 namespace ImGuiNET.SampleProgram.XNA
 {
@@ -54,7 +54,7 @@ namespace ImGuiNET.SampleProgram.XNA
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(new Color(clear_color.X, clear_color.Y, clear_color.Z));
+            GraphicsDevice.Clear(new Color(clear_color.x, clear_color.y, clear_color.z));
 
             // Call BeforeLayout first to set things up
             _imGuiRenderer.BeforeLayout(gameTime);
@@ -73,7 +73,7 @@ namespace ImGuiNET.SampleProgram.XNA
 
         private bool show_test_window = false;
         private bool show_another_window = false;
-        private Num.Vector3 clear_color = new Num.Vector3(114f / 255f, 144f / 255f, 154f / 255f);
+        private UnityEngine.Vector3 clear_color = new Num.Vector3(114f / 255f, 144f / 255f, 154f / 255f);
         private byte[] _textBuffer = new byte[100];
 
         protected virtual void ImGuiLayout()
@@ -91,7 +91,7 @@ namespace ImGuiNET.SampleProgram.XNA
                 ImGui.InputText("Text input", _textBuffer, 100);
 
                 ImGui.Text("Texture sample");
-                ImGui.Image(_imGuiTexture, new Num.Vector2(300, 150), Num.Vector2.Zero, Num.Vector2.One, Num.Vector4.One, Num.Vector4.One); // Here, the previously loaded texture is used
+                //ImGui.Image(_imGuiTexture, new Num.Vector2(300, 150), Num.Vector2.zero, Num.Vector2.one, Num.Vector4.one, Num.Vector4.one); // Here, the previously loaded texture is used
             }
 
             // 2. Show another simple window, this time using an explicit Begin/End pair

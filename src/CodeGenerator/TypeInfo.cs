@@ -57,6 +57,13 @@ namespace CodeGenerator
             { "ImPlotTransform", "IntPtr" },
             { "ImGuiKeyChord", "ImGuiKey" },
             { "ImGuiSelectionUserData", "long" },
+            { "LinkDetachWithModifierClick*", "IntPtr"},
+            { "LinkDetachWithModifierClick", "IntPtr"},
+            { "ImNodesContext", "IntPtr"},
+            { "ImNodesContext*", "IntPtr"},
+            { "ImNodesEditorContext*", "IntPtr"},
+            { "ImNodesEditorContext", "IntPtr"},
+            { "ImNodesMiniMapNodeHoveringCallback", "IntPtr"},
         };
         
         public static readonly List<string> WellKnownEnums = new List<string>()

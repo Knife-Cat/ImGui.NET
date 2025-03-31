@@ -1,5 +1,5 @@
 using System;
-using System.Numerics;
+using UnityEngine;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -57,6 +57,7 @@ namespace ImGuiNET
         public byte ConfigErrorRecoveryEnableTooltip;
         public byte ConfigDebugIsDebuggerPresent;
         public byte ConfigDebugHighlightIdConflicts;
+        public byte ConfigDebugHighlightIdConflictsShowItemPicker;
         public byte ConfigDebugBeginReturnValueOnce;
         public byte ConfigDebugBeginReturnValueLoop;
         public byte ConfigDebugIgnoreFocusLoss;
@@ -245,6 +246,7 @@ namespace ImGuiNET
         public ImGuiKeyData KeysData_151;
         public ImGuiKeyData KeysData_152;
         public ImGuiKeyData KeysData_153;
+        public ImGuiKeyData KeysData_154;
         public byte WantCaptureMouseUnlessPopupClose;
         public Vector2 MousePosPrev;
         public Vector2 MouseClickedPos_0;
@@ -258,6 +260,7 @@ namespace ImGuiNET
         public fixed ushort MouseClickedCount[5];
         public fixed ushort MouseClickedLastCount[5];
         public fixed byte MouseReleased[5];
+        public fixed double MouseReleasedTime[5];
         public fixed byte MouseDownOwned[5];
         public fixed byte MouseDownOwnedUnlessPopupClose[5];
         public byte MouseWheelRequestAxisSwap;
@@ -334,6 +337,7 @@ namespace ImGuiNET
         public ref bool ConfigErrorRecoveryEnableTooltip => ref Unsafe.AsRef<bool>(&NativePtr->ConfigErrorRecoveryEnableTooltip);
         public ref bool ConfigDebugIsDebuggerPresent => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugIsDebuggerPresent);
         public ref bool ConfigDebugHighlightIdConflicts => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugHighlightIdConflicts);
+        public ref bool ConfigDebugHighlightIdConflictsShowItemPicker => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugHighlightIdConflictsShowItemPicker);
         public ref bool ConfigDebugBeginReturnValueOnce => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugBeginReturnValueOnce);
         public ref bool ConfigDebugBeginReturnValueLoop => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugBeginReturnValueLoop);
         public ref bool ConfigDebugIgnoreFocusLoss => ref Unsafe.AsRef<bool>(&NativePtr->ConfigDebugIgnoreFocusLoss);
@@ -368,7 +372,7 @@ namespace ImGuiNET
         public ref bool KeyAlt => ref Unsafe.AsRef<bool>(&NativePtr->KeyAlt);
         public ref bool KeySuper => ref Unsafe.AsRef<bool>(&NativePtr->KeySuper);
         public ref ImGuiKey KeyMods => ref Unsafe.AsRef<ImGuiKey>(&NativePtr->KeyMods);
-        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>(&NativePtr->KeysData_0, 154);
+        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>(&NativePtr->KeysData_0, 155);
         public ref bool WantCaptureMouseUnlessPopupClose => ref Unsafe.AsRef<bool>(&NativePtr->WantCaptureMouseUnlessPopupClose);
         public ref Vector2 MousePosPrev => ref Unsafe.AsRef<Vector2>(&NativePtr->MousePosPrev);
         public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos_0, 5);
@@ -378,6 +382,7 @@ namespace ImGuiNET
         public RangeAccessor<ushort> MouseClickedCount => new RangeAccessor<ushort>(NativePtr->MouseClickedCount, 5);
         public RangeAccessor<ushort> MouseClickedLastCount => new RangeAccessor<ushort>(NativePtr->MouseClickedLastCount, 5);
         public RangeAccessor<bool> MouseReleased => new RangeAccessor<bool>(NativePtr->MouseReleased, 5);
+        public RangeAccessor<double> MouseReleasedTime => new RangeAccessor<double>(NativePtr->MouseReleasedTime, 5);
         public RangeAccessor<bool> MouseDownOwned => new RangeAccessor<bool>(NativePtr->MouseDownOwned, 5);
         public RangeAccessor<bool> MouseDownOwnedUnlessPopupClose => new RangeAccessor<bool>(NativePtr->MouseDownOwnedUnlessPopupClose, 5);
         public ref bool MouseWheelRequestAxisSwap => ref Unsafe.AsRef<bool>(&NativePtr->MouseWheelRequestAxisSwap);

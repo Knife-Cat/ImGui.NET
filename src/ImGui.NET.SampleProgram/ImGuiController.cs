@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
+using UnityEngine;
 using System.Reflection;
 using System.IO;
 using Veldrid;
@@ -21,7 +21,7 @@ namespace ImGuiNET
         private DeviceBuffer _vertexBuffer;
         private DeviceBuffer _indexBuffer;
         private DeviceBuffer _projMatrixBuffer;
-        private Texture _fontTexture;
+        private Veldrid.Texture _fontTexture;
         private TextureView _fontTextureView;
         private Shader _vertexShader;
         private Shader _fragmentShader;
@@ -39,7 +39,7 @@ namespace ImGuiNET
 
         private int _windowWidth;
         private int _windowHeight;
-        private Vector2 _scaleFactor = Vector2.One;
+        private Vector2 _scaleFactor = Vector2.one;
 
         // Image trackers
         private readonly Dictionary<TextureView, ResourceSetInfo> _setsByView

@@ -1,5 +1,5 @@
 using System;
-using System.Numerics;
+using UnityEngine;
 using System.Runtime.InteropServices;
 using System.Text;
 using ImGuiNET;
@@ -66,12 +66,12 @@ namespace ImGuizmoNET
         }
         public static bool IsOver()
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverNil();
+            byte ret = ImGuizmoNative.ImGuizmo_IsOver_Nil();
             return ret != 0;
         }
         public static bool IsOver(OPERATION op)
         {
-            byte ret = ImGuizmoNative.ImGuizmo_IsOverOPERATION(op);
+            byte ret = ImGuizmoNative.ImGuizmo_IsOver_OPERATION(op);
             return ret != 0;
         }
         public static bool IsUsing()

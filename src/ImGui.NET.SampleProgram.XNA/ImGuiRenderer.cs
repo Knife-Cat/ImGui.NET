@@ -176,7 +176,7 @@ namespace ImGuiNET.SampleProgram.XNA
 
             _effect.World = Matrix.Identity;
             _effect.View = Matrix.Identity;
-            _effect.Projection = Matrix.CreateOrthographicOffCenter(0f, io.DisplaySize.X, io.DisplaySize.Y, 0f, -1f, 1f);
+            _effect.Projection = Matrix.CreateOrthographicOffCenter(0f, io.DisplaySize.y, io.DisplaySize.y, 0f, -1f, 1f);
             _effect.TextureEnabled = true;
             _effect.Texture = texture;
             _effect.VertexColorEnabled = true;
@@ -216,8 +216,8 @@ namespace ImGuiNET.SampleProgram.XNA
                 }
             }
 
-            io.DisplaySize = new System.Numerics.Vector2(_graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
-            io.DisplayFramebufferScale = new System.Numerics.Vector2(1f, 1f);
+            io.DisplaySize = new UnityEngine.Vector2(_graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+            io.DisplayFramebufferScale = new UnityEngine.Vector2(1f, 1f);
         }
 
         private bool TryMapKeys(Keys key, out ImGuiKey imguikey)
@@ -401,10 +401,10 @@ namespace ImGuiNET.SampleProgram.XNA
                     }
 
                     _graphicsDevice.ScissorRectangle = new Rectangle(
-                        (int)drawCmd.ClipRect.X,
-                        (int)drawCmd.ClipRect.Y,
-                        (int)(drawCmd.ClipRect.Z - drawCmd.ClipRect.X),
-                        (int)(drawCmd.ClipRect.W - drawCmd.ClipRect.Y)
+                        (int)drawCmd.ClipRect.x,
+                        (int)drawCmd.ClipRect.y,
+                        (int)(drawCmd.ClipRect.z - drawCmd.ClipRect.x),
+                        (int)(drawCmd.ClipRect.w - drawCmd.ClipRect.y)
                     );
 
                     var effect = UpdateEffect(_loadedTextures[drawCmd.TextureId]);

@@ -1,5 +1,5 @@
 using System;
-using System.Numerics;
+using UnityEngine;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -12785,7 +12785,7 @@ namespace ImGuiNET
         }
         public static ImGuiIOPtr GetIO()
         {
-            ImGuiIO* ret = ImGuiNative.igGetIO();
+            ImGuiIO* ret = ImGuiNative.igGetIO_Nil();
             return new ImGuiIOPtr(ret);
         }
         public static uint GetItemID()
@@ -12871,7 +12871,7 @@ namespace ImGuiNET
         }
         public static ImGuiPlatformIOPtr GetPlatformIO()
         {
-            ImGuiPlatformIO* ret = ImGuiNative.igGetPlatformIO();
+            ImGuiPlatformIO* ret = ImGuiNative.igGetPlatformIO_Nil();
             return new ImGuiPlatformIOPtr(ret);
         }
         public static float GetScrollMaxX()
@@ -12985,31 +12985,16 @@ namespace ImGuiNET
         {
             Vector2 uv0 = new Vector2();
             Vector2 uv1 = new Vector2(1, 1);
-            Vector4 tint_col = new Vector4(1, 1, 1, 1);
-            Vector4 border_col = new Vector4();
-            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1, tint_col, border_col);
+            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1);
         }
         public static void Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0)
         {
             Vector2 uv1 = new Vector2(1, 1);
-            Vector4 tint_col = new Vector4(1, 1, 1, 1);
-            Vector4 border_col = new Vector4();
-            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1, tint_col, border_col);
+            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1);
         }
         public static void Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1)
         {
-            Vector4 tint_col = new Vector4(1, 1, 1, 1);
-            Vector4 border_col = new Vector4();
-            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1, tint_col, border_col);
-        }
-        public static void Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 tint_col)
-        {
-            Vector4 border_col = new Vector4();
-            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1, tint_col, border_col);
-        }
-        public static void Image(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 tint_col, Vector4 border_col)
-        {
-            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1, tint_col, border_col);
+            ImGuiNative.igImage(user_texture_id, image_size, uv0, uv1);
         }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
         public static bool ImageButton(ReadOnlySpan<char> str_id, IntPtr user_texture_id, Vector2 image_size)
@@ -13310,6 +13295,36 @@ namespace ImGuiNET
                 Util.Free(native_str_id);
             }
             return ret != 0;
+        }
+        public static void ImageWithBg(IntPtr user_texture_id, Vector2 image_size)
+        {
+            Vector2 uv0 = new Vector2();
+            Vector2 uv1 = new Vector2(1, 1);
+            Vector4 bg_col = new Vector4();
+            Vector4 tint_col = new Vector4(1, 1, 1, 1);
+            ImGuiNative.igImageWithBg(user_texture_id, image_size, uv0, uv1, bg_col, tint_col);
+        }
+        public static void ImageWithBg(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0)
+        {
+            Vector2 uv1 = new Vector2(1, 1);
+            Vector4 bg_col = new Vector4();
+            Vector4 tint_col = new Vector4(1, 1, 1, 1);
+            ImGuiNative.igImageWithBg(user_texture_id, image_size, uv0, uv1, bg_col, tint_col);
+        }
+        public static void ImageWithBg(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1)
+        {
+            Vector4 bg_col = new Vector4();
+            Vector4 tint_col = new Vector4(1, 1, 1, 1);
+            ImGuiNative.igImageWithBg(user_texture_id, image_size, uv0, uv1, bg_col, tint_col);
+        }
+        public static void ImageWithBg(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col)
+        {
+            Vector4 tint_col = new Vector4(1, 1, 1, 1);
+            ImGuiNative.igImageWithBg(user_texture_id, image_size, uv0, uv1, bg_col, tint_col);
+        }
+        public static void ImageWithBg(IntPtr user_texture_id, Vector2 image_size, Vector2 uv0, Vector2 uv1, Vector4 bg_col, Vector4 tint_col)
+        {
+            ImGuiNative.igImageWithBg(user_texture_id, image_size, uv0, uv1, bg_col, tint_col);
         }
         public static void Indent()
         {
@@ -17054,6 +17069,11 @@ namespace ImGuiNET
         public static bool IsMouseReleased(ImGuiMouseButton button)
         {
             byte ret = ImGuiNative.igIsMouseReleased_Nil(button);
+            return ret != 0;
+        }
+        public static bool IsMouseReleasedWithDelay(ImGuiMouseButton button, float delay)
+        {
+            byte ret = ImGuiNative.igIsMouseReleasedWithDelay(button, delay);
             return ret != 0;
         }
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
