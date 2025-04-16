@@ -64,6 +64,7 @@ namespace CodeGenerator
             { "ImNodesEditorContext*", "IntPtr"},
             { "ImNodesEditorContext", "IntPtr"},
             { "ImNodesMiniMapNodeHoveringCallback", "IntPtr"},
+            { "ImAssertFunc", "IntPtr"}
         };
         
         public static readonly List<string> WellKnownEnums = new List<string>()
